@@ -299,6 +299,57 @@
         text-underline-offset: 0.18em;
       }
 
+      .alternative-cta {
+        display: inline-flex;
+        width: 100%;
+        min-height: 3.15rem;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        padding: 0.55rem 0.9rem;
+        border: 1px solid rgb(255 255 255 / 18%);
+        border-radius: 0.75rem;
+        background: #030303;
+        box-shadow: 0 10px 24px rgb(0 0 0 / 30%);
+        color: #fff;
+        font-size: clamp(0.72rem, 1.8vw, 0.88rem);
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        line-height: 1;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: filter 160ms ease, transform 160ms ease;
+      }
+
+      .alternative-cta:hover {
+        filter: brightness(1.14);
+      }
+
+      .alternative-cta:active {
+        transform: translateY(2px);
+      }
+
+      .alternative-cta:focus-visible {
+        outline: 3px solid var(--blue-200);
+        outline-offset: 4px;
+      }
+
+      .whatsapp-icon-box {
+        display: inline-grid;
+        width: 2rem;
+        height: 2rem;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 0.5rem;
+        background: #25d366;
+      }
+
+      .whatsapp-icon {
+        width: 1.45rem;
+        height: 1.45rem;
+        fill: currentColor;
+      }
+
       .footer {
         position: relative;
         z-index: 4;
@@ -454,9 +505,12 @@
         .hero-title {
           width: 100%;
           max-width: 100%;
-          font-size: clamp(3.35rem, 17vw, 5.2rem);
+          padding-inline: 0.25rem;
+          font-size: clamp(3.15rem, 15vw, 4.7rem);
           line-height: 0.78;
           text-align: center;
+          transform: scaleX(0.96);
+          transform-origin: center;
         }
 
         .title-line {
@@ -495,6 +549,28 @@
           border-radius: 0.9rem;
           font-size: clamp(0.86rem, 3.8vw, 1rem);
           animation: pulse 1.35s ease-in-out infinite;
+        }
+
+        .alternative-cta {
+          width: min(88vw, 390px);
+          min-height: 2.75rem;
+          gap: 0.52rem;
+          padding: 0.42rem 0.6rem;
+          border-radius: 0.62rem;
+          font-size: clamp(0.59rem, 2.65vw, 0.73rem);
+          letter-spacing: 0.045em;
+          white-space: nowrap;
+        }
+
+        .whatsapp-icon-box {
+          width: 1.75rem;
+          height: 1.75rem;
+          border-radius: 0.42rem;
+        }
+
+        .whatsapp-icon {
+          width: 1.28rem;
+          height: 1.28rem;
         }
 
         .telegram-icon {
@@ -620,6 +696,19 @@
                 e
                 <a href="https://lp-comunidade-one.vercel.app/politica-de-privacidade.html">Políticas</a>
               </p>
+
+              <a
+                class="alternative-cta"
+                href="https://lp.estrela.work/"
+                aria-label="Clique aqui caso você não tenha Telegram"
+              >
+                <span class="whatsapp-icon-box" aria-hidden="true">
+                  <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.149-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.148-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.009-.371-.011-.57-.011-.198 0-.52.074-.792.371-.272.298-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.892-9.884a9.82 9.82 0 0 1 7.021 2.91 9.83 9.83 0 0 1 2.897 7.022c-.003 5.45-4.437 9.885-9.926 9.885m8.413-18.297A11.82 11.82 0 0 0 12.055 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.689 1.448h.005c6.558 0 11.894-5.335 11.897-11.893a11.82 11.82 0 0 0-3.489-8.413Z" />
+                  </svg>
+                </span>
+                <span>CLIQUE AQUI CASO VOCÊ NÃO TENHA TELEGRAM</span>
+              </a>
             </div>
           </div>
         </section>
