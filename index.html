@@ -301,18 +301,18 @@
 
       .alternative-cta {
         display: inline-flex;
-        width: 100%;
-        min-height: 3.15rem;
+        width: auto;
+        min-height: 2.55rem;
         align-items: center;
         justify-content: center;
-        gap: 0.7rem;
-        padding: 0.55rem 0.9rem;
-        border: 1px solid rgb(255 255 255 / 18%);
-        border-radius: 0.75rem;
-        background: #030303;
-        box-shadow: 0 10px 24px rgb(0 0 0 / 30%);
+        gap: 0.55rem;
+        padding: 0.4rem 0.65rem;
+        border: 1px solid transparent;
+        border-radius: 0.65rem;
+        background: transparent;
+        box-shadow: none;
         color: #fff;
-        font-size: clamp(0.72rem, 1.8vw, 0.88rem);
+        font-size: clamp(0.65rem, 1.55vw, 0.78rem);
         font-weight: 900;
         letter-spacing: 0.06em;
         line-height: 1;
@@ -322,11 +322,12 @@
       }
 
       .alternative-cta:hover {
-        filter: brightness(1.14);
+        animation: alternative-pulse 0.85s ease-in-out infinite;
       }
 
       .alternative-cta:active {
-        transform: translateY(2px);
+        animation: alternative-pulse 0.42s ease-in-out infinite;
+        transform: scale(0.96);
       }
 
       .alternative-cta:focus-visible {
@@ -336,8 +337,8 @@
 
       .whatsapp-icon-box {
         display: inline-grid;
-        width: 2rem;
-        height: 2rem;
+        width: 1.75rem;
+        height: 1.75rem;
         flex: 0 0 auto;
         place-items: center;
         border-radius: 0.5rem;
@@ -345,8 +346,8 @@
       }
 
       .whatsapp-icon {
-        width: 1.45rem;
-        height: 1.45rem;
+        width: 1.28rem;
+        height: 1.28rem;
         fill: currentColor;
       }
 
@@ -462,6 +463,18 @@
         }
       }
 
+      @keyframes alternative-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          filter: brightness(1);
+        }
+        50% {
+          transform: scale(1.045);
+          filter: brightness(1.18);
+        }
+      }
+
       @media (max-width: 620px) {
         body {
           background-attachment: scroll;
@@ -506,10 +519,10 @@
           width: 100%;
           max-width: 100%;
           padding-inline: 0.25rem;
-          font-size: clamp(3.15rem, 15vw, 4.7rem);
+          font-size: clamp(3.8rem, 18vw, 5.6rem);
           line-height: 0.78;
           text-align: center;
-          transform: scaleX(0.96);
+          transform: scaleX(0.7);
           transform-origin: center;
         }
 
@@ -552,25 +565,26 @@
         }
 
         .alternative-cta {
-          width: min(88vw, 390px);
-          min-height: 2.75rem;
-          gap: 0.52rem;
-          padding: 0.42rem 0.6rem;
+          width: auto;
+          max-width: 100%;
+          min-height: 2.2rem;
+          gap: 0.42rem;
+          padding: 0.28rem 0.4rem;
           border-radius: 0.62rem;
-          font-size: clamp(0.59rem, 2.65vw, 0.73rem);
-          letter-spacing: 0.045em;
+          font-size: clamp(0.54rem, 2.25vw, 0.65rem);
+          letter-spacing: 0.035em;
           white-space: nowrap;
         }
 
         .whatsapp-icon-box {
-          width: 1.75rem;
-          height: 1.75rem;
+          width: 1.55rem;
+          height: 1.55rem;
           border-radius: 0.42rem;
         }
 
         .whatsapp-icon {
-          width: 1.28rem;
-          height: 1.28rem;
+          width: 1.12rem;
+          height: 1.12rem;
         }
 
         .telegram-icon {
