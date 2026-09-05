@@ -518,16 +518,23 @@
         .hero-title {
           width: 100%;
           max-width: 100%;
-          padding-inline: 0.25rem;
+          padding-inline: 1rem;
           font-size: clamp(3.8rem, 18vw, 5.6rem);
           line-height: 0.78;
+          letter-spacing: -0.14em;
           text-align: center;
-          transform: scaleX(0.7);
-          transform-origin: center;
+          filter: none;
+          text-shadow:
+            0 8px 0 rgb(11 79 117 / 66%),
+            0 0 22px rgb(147 205 230 / 28%);
+          transform: none;
         }
 
         .title-line {
-          width: 100%;
+          width: auto;
+          max-width: 100%;
+          padding-inline: 0.12em;
+          overflow: visible;
         }
 
         .glass-card {
