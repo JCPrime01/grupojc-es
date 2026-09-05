@@ -33,12 +33,16 @@
       }
 
       html {
-        min-width: 320px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
         background: var(--blue-900);
       }
 
       body {
-        min-width: 320px;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
         min-height: 100svh;
         margin: 0;
         overflow-x: hidden;
@@ -75,9 +79,19 @@
         position: relative;
         display: grid;
         width: 100%;
+        max-width: 100%;
         min-height: 100svh;
         grid-template-rows: minmax(0, 1fr) auto;
         isolation: isolate;
+        overflow-x: hidden;
+      }
+
+      @supports (overflow: clip) {
+        html,
+        body,
+        .page {
+          overflow-x: clip;
+        }
       }
 
       .hero {
@@ -398,30 +412,40 @@
       }
 
       @media (max-width: 620px) {
+        body {
+          background-attachment: scroll;
+          background-position: center top;
+        }
+
         .hero {
           display: grid;
+          width: 100%;
+          max-width: 100%;
           align-items: stretch;
           justify-items: center;
           padding-top: max(1.5rem, env(safe-area-inset-top));
-          padding-inline: 0.85rem;
+          padding-right: max(0.8rem, env(safe-area-inset-right));
           padding-bottom: max(1rem, env(safe-area-inset-bottom));
+          padding-left: max(0.8rem, env(safe-area-inset-left));
         }
 
         .hero-inner {
           position: relative;
           display: grid;
-          width: min(94vw, 520px);
+          width: 100%;
+          max-width: 520px;
           height: 100%;
           margin-inline: auto;
           grid-template-rows: minmax(0, 1fr) auto;
           align-items: center;
           justify-items: center;
-          transform: translateX(clamp(-10px, -2vw, -6px));
+          transform: none;
         }
 
         .title-stage {
           position: static;
-          width: min(98vw, 540px);
+          width: 100%;
+          max-width: 100%;
           gap: 0.2rem;
           padding: 0;
           transform: none;
@@ -429,8 +453,14 @@
 
         .hero-title {
           width: 100%;
-          font-size: clamp(4rem, 20vw, 6.8rem);
+          max-width: 100%;
+          font-size: clamp(3.35rem, 17vw, 5.2rem);
           line-height: 0.78;
+          text-align: center;
+        }
+
+        .title-line {
+          width: 100%;
         }
 
         .glass-card {
@@ -439,14 +469,16 @@
 
         .conversion-content {
           position: static;
-          width: min(92vw, 520px);
+          width: 100%;
+          max-width: 520px;
           gap: clamp(1.9rem, 4.6vh, 2.4rem);
           margin: 0 0 3.6rem;
           transform: none;
         }
 
         .cta-wrap {
-          width: min(94vw, 410px);
+          width: 100%;
+          max-width: 410px;
         }
 
         .legal-note {
