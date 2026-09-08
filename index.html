@@ -13,6 +13,55 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2393cde6' stroke='%231c92d2' stroke-width='4'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial' font-size='25' font-weight='900' fill='%23ffffff'%3EJC%3C/text%3E%3C/svg%3E"
     />
+
+    <link rel="preconnect" href="https://track.grupojc.cc" crossorigin />
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+
+    <script src="https://track.grupojc.cc/track/73cd9930-51c4-45aa-9abb-ace3f8942964.js" async></script>
+
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '806613525559509');
+      fbq('track', 'PageViewJC');
+
+      (function () {
+        var orig = window.fbq;
+        if (!orig) return;
+        var BLOCKED = '961619428689288';
+        if (Array.isArray(orig.queue)) {
+          orig.queue = orig.queue.filter(function (e) {
+            return !(e && e[0] === 'init' && e[1] === BLOCKED);
+          });
+        }
+        var wrapper = function () {
+          if (arguments[0] === 'init' && arguments[1] === BLOCKED) return;
+          return wrapper.callMethod
+            ? wrapper.callMethod.apply(wrapper, arguments)
+            : wrapper.queue.push(arguments);
+        };
+        wrapper.queue = orig.queue;
+        wrapper.loaded = orig.loaded;
+        wrapper.version = orig.version;
+        wrapper._fbq = orig._fbq;
+        wrapper.push = wrapper;
+        wrapper.callMethod = orig.callMethod;
+        window.fbq = wrapper;
+        if (window._fbq === orig) window._fbq = wrapper;
+      })();
+
+      function dispararLead() {
+        var eventId = 'CliqueJC' + Date.now();
+        var params = new URLSearchParams(window.location.search);
+        var utms = {};
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','campaign','fbclid','gclid','cid','account_id','bot'].forEach(function (k) {
+          var v = params.get(k);
+          if (v) utms[k] = v;
+        });
+        try { fbq('track', 'CliqueJC', utms, { eventID: eventId }); } catch (e) {}
+        window._lastLeadEventId = eventId;
+        return eventId;
+      }
+    </script>
     <style>
       :root {
         color-scheme: dark;
@@ -687,6 +736,7 @@
     </script>
   </head>
   <body>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=806613525559509&ev=PageViewJC&noscript=1" alt="" /></noscript>
     <div class="page">
       <main class="hero">
         <img
@@ -719,7 +769,10 @@
             <div class="cta-wrap">
               <a
                 class="cta"
-                href="https://www.estrelabet.bet.br/"
+                href="https://track.grupojc.cc/track/73cd9930-51c4-45aa-9abb-ace3f8942964/wa?next=https://www.estrelabet.bet.br/"
+                data-href="https://track.grupojc.cc/track/73cd9930-51c4-45aa-9abb-ace3f8942964/wa?next=https://www.estrelabet.bet.br/"
+                target="_self"
+                rel="noopener noreferrer"
                 aria-label="Entrar no grupo"
               >
                 <svg class="telegram-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -738,6 +791,9 @@
               <a
                 class="alternative-cta"
                 href="https://lp.estrela.work/"
+                data-href="https://lp.estrela.work/"
+                target="_self"
+                rel="noopener noreferrer"
                 aria-label="Clique aqui caso você não tenha Telegram"
               >
                 <span class="whatsapp-icon-box" aria-hidden="true">
@@ -805,6 +861,52 @@
           window.setTimeout(() => {
             title.classList.add("title-visible");
           }, isMobile ? 280 : 440);
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var TRACK_HOST = 'track.grupojc.cc';
+        var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','campaign','fbclid','gclid','cid','account_id','bot'];
+
+        function mergeTrackingParams(href) {
+          var params = new URLSearchParams(window.location.search);
+          var url = new URL(href);
+          UTM_KEYS.forEach(function (k) {
+            var v = params.get(k);
+            if (v) url.searchParams.set(k, v);
+          });
+          if (url.hostname === TRACK_HOST) {
+            var fbp = document.cookie.match(/(?:^|; )_fbp=([^;]+)/);
+            var fbc = document.cookie.match(/(?:^|; )_fbc=([^;]+)/);
+            if (fbp) url.searchParams.set('fbp', decodeURIComponent(fbp[1]));
+            if (fbc) {
+              url.searchParams.set('fbc', decodeURIComponent(fbc[1]));
+            } else if (params.get('fbclid')) {
+              url.searchParams.set('fbc', 'fb.1.' + Date.now() + '.' + params.get('fbclid'));
+            }
+          }
+          return url;
+        }
+
+        function handleCtaClick(e) {
+          try {
+            var anchor = e.currentTarget;
+            var baseHref = anchor.getAttribute('data-href') || anchor.href;
+            var url = mergeTrackingParams(baseHref);
+            try {
+              if (typeof window.dispararLead === 'function') {
+                var eid = window.dispararLead();
+                if (eid && url.hostname === TRACK_HOST) url.searchParams.set('eid', eid);
+              }
+            } catch (err) { /* ignore */ }
+            anchor.href = url.toString();
+          } catch (err) { /* ignore */ }
+        }
+
+        document.querySelectorAll('.cta, .alternative-cta').forEach(function (a) {
+          a.addEventListener('click', handleCtaClick);
         });
       })();
     </script>
