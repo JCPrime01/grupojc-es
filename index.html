@@ -244,7 +244,7 @@
       }
 
       .js .scene-start .kickoff-ball {
-        animation: ball-cross 2.25s cubic-bezier(0.28, 0.06, 0.2, 1) both;
+        animation: ball-cross 10s cubic-bezier(0.28, 0.06, 0.2, 1) infinite;
       }
 
       .conversion-content {
@@ -455,24 +455,27 @@
           transform: translate3d(0, -48%, 0) rotate(-24deg) scale(0.96);
         }
 
-        6%,
-        90% {
+        2% {
           opacity: 1;
         }
 
-        25% {
+        6% {
           transform: translate3d(calc(25vw + 46vmin), -52%, 0) rotate(230deg) scale(1);
         }
 
-        50% {
+        11% {
           transform: translate3d(calc(50vw + 92vmin), -48%, 0) rotate(490deg) scale(1.015);
         }
 
-        75% {
+        17% {
           transform: translate3d(calc(75vw + 138vmin), -51%, 0) rotate(745deg) scale(1);
         }
 
-        100% {
+        20% {
+          opacity: 1;
+        }
+
+        23%, 100% {
           opacity: 0;
           transform: translate3d(calc(100vw + 184vmin), -48%, 0) rotate(1000deg) scale(0.97);
         }
@@ -750,8 +753,6 @@
 
         <section class="hero-inner" aria-labelledby="main-title">
           <div class="title-stage">
-            <p class="eyebrow">Análises todos os dias</p>
-
             <h1 id="main-title" class="hero-title" aria-label="Entrada Liberada">
               <span class="title-line">ENTRADA</span>
               <span class="title-line">LIBERADA</span>
