@@ -18,18 +18,17 @@
     <meta property="og:url" content="https://grupojc-es.vercel.app/" />
     <meta property="og:title" content="ENTRADA LIBERADA — Grupo do Jota" />
     <meta property="og:description" content="Te espero no meu grupo gratuito, onde eu trabalho pra você todos os dias." />
-    <meta property="og:image" content="https://comunidadejc-es.vercel.app/field-pop-art.png" />
+    <meta property="og:image" content="https://grupojc-es.vercel.app/field-pop-art.webp" />
     <meta property="og:locale" content="pt_BR" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="ENTRADA LIBERADA — Grupo do Jota" />
     <meta name="twitter:description" content="Te espero no meu grupo gratuito, onde eu trabalho pra você todos os dias." />
-    <meta name="twitter:image" content="https://comunidadejc-es.vercel.app/field-pop-art.png" />
+    <meta name="twitter:image" content="https://grupojc-es.vercel.app/field-pop-art.webp" />
 
     <link rel="preconnect" href="https://track.grupojc.cc" crossorigin />
     <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
-    <link rel="preconnect" href="https://comunidadejc-es.vercel.app" crossorigin />
-    <link rel="preload" as="image" href="https://comunidadejc-es.vercel.app/field-pop-art.png" fetchpriority="high" />
-    <link rel="preload" as="image" href="https://comunidadejc-es.vercel.app/football-single.png" />
+    <link rel="preload" as="image" href="/field-pop-art.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/football-single.webp" />
 
     <script src="https://track.grupojc.cc/track/73cd9930-51c4-45aa-9abb-ace3f8942964.js" async></script>
 
@@ -86,6 +85,19 @@
         window._lastLeadEventId = eventId;
         return eventId;
       }
+
+      function dispararLeadWhats() {
+        var eventId = 'SearchWhatsJC' + Date.now();
+        var params = new URLSearchParams(window.location.search);
+        var utms = {};
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','campaign','fbclid','gclid','cid','account_id','bot'].forEach(function (k) {
+          var v = params.get(k);
+          if (v) utms[k] = v;
+        });
+        try { fbq('track', 'SearchWhatsJC', utms, { eventID: eventId }); } catch (e) {}
+        window._lastLeadEventIdWhats = eventId;
+        return eventId;
+      }
     </script>
     <style>
       :root {
@@ -126,7 +138,7 @@
           "Segoe UI", sans-serif;
         background-image:
           linear-gradient(180deg, rgb(28 146 210 / 58%), rgb(11 79 117 / 90%)),
-          url("https://comunidadejc-es.vercel.app/field-pop-art.png");
+          url("/field-pop-art.webp");
         background-position: center;
         background-size: cover;
         background-attachment: fixed;
@@ -763,7 +775,7 @@
       <main class="hero">
         <img
           class="kickoff-ball"
-          src="https://comunidadejc-es.vercel.app/football-single.png"
+          src="/football-single.webp"
           width="1254"
           height="1254"
           alt=""
@@ -924,8 +936,26 @@
           } catch (err) { /* ignore */ }
         }
 
-        document.querySelectorAll('.cta, .alternative-cta').forEach(function (a) {
+        function handleSecondaryClick(e) {
+          try {
+            var anchor = e.currentTarget;
+            var baseHref = anchor.getAttribute('data-href') || anchor.href;
+            var url = mergeTrackingParams(baseHref);
+            try {
+              if (typeof window.dispararLeadWhats === 'function') {
+                var eid = window.dispararLeadWhats();
+                if (eid && url.hostname === TRACK_HOST) url.searchParams.set('eid', eid);
+              }
+            } catch (err) { /* ignore */ }
+            anchor.href = url.toString();
+          } catch (err) { /* ignore */ }
+        }
+
+        document.querySelectorAll('.cta').forEach(function (a) {
           a.addEventListener('click', handleCtaClick);
+        });
+        document.querySelectorAll('.alternative-cta').forEach(function (a) {
+          a.addEventListener('click', handleSecondaryClick);
         });
       })();
     </script>
