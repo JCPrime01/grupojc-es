@@ -928,6 +928,12 @@
             var anchor = e.currentTarget;
             var baseHref = anchor.getAttribute('data-href') || anchor.href;
             var url = mergeTrackingParams(baseHref);
+            /* FIX 2026-09-10: preserva ?message= caso presell.js seja adicionado no futuro. */
+            try {
+              var currentUrl = new URL(anchor.href, window.location.href);
+              var presellMsg = currentUrl.searchParams.get('message');
+              if (presellMsg) url.searchParams.set('message', presellMsg);
+            } catch (err) { /* ignore */ }
             try {
               if (typeof window.dispararLead === 'function') {
                 var eid = window.dispararLead();
@@ -943,6 +949,12 @@
             var anchor = e.currentTarget;
             var baseHref = anchor.getAttribute('data-href') || anchor.href;
             var url = mergeTrackingParams(baseHref);
+            /* FIX 2026-09-10: preserva ?message= caso presell.js seja adicionado no futuro. */
+            try {
+              var currentUrl = new URL(anchor.href, window.location.href);
+              var presellMsg = currentUrl.searchParams.get('message');
+              if (presellMsg) url.searchParams.set('message', presellMsg);
+            } catch (err) { /* ignore */ }
             try {
               if (typeof window.dispararLeadWhats === 'function') {
                 var eid = window.dispararLeadWhats();
